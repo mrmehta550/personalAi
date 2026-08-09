@@ -1,0 +1,419 @@
+{
+  "about_me": [
+    {
+      "text": "I am Vishal Kumar, a Python and AI developer with a BCA (Bachelor of Computer Applications) degree. I specialize in building AI-powered applications, backend APIs, and full-stack web projects. My main technical interests are AI engineering, large language models, retrieval-augmented generation (RAG), and backend development with Python.",
+      "source": "bio"
+    },
+    {
+      "text": "I am passionate about applied AI and enjoy building systems that combine language models, vector databases, and APIs into production-ready applications. I have built projects involving LangChain, LangGraph, ChromaDB, Hugging Face models, FastAPI, and Django.",
+      "source": "professional_interests"
+    },
+    {
+      "text": "As a developer, I focus on creating practical AI solutions — from automated email processing systems to YouTube video intelligence assistants and interactive portfolio AI agents. I enjoy working on the intersection of backend engineering and AI/ML.",
+      "source": "developer_identity"
+    },
+    {
+      "text": "My technical background includes Python, JavaScript, Django, FastAPI, Django REST Framework, React, LangChain, LangGraph, Hugging Face, ChromaDB, MySQL, SQLite, Git, and GitHub. I am comfortable building both the backend and frontend of full-stack web applications.",
+      "source": "technical_summary"
+    },
+    {
+      "text": "I am interested in opportunities related to AI engineering, Python backend development, and full-stack development. I am open to internships, full-time roles, freelance projects, and collaborations involving AI, web development, or API development.",
+      "source": "career_goals"
+    }
+  ],
+  "resume": [
+    {
+      "text": "Education: BCA (Bachelor of Computer Applications). I completed my BCA degree with a focus on computer science, software development, and information technology.",
+      "source": "education"
+    },
+    {
+      "text": "Technical Skills Summary: Programming Languages: Python (primary), JavaScript, HTML, CSS, SQL. Backend Frameworks: Django, FastAPI, Django REST Framework. Frontend: React. AI/ML: LangChain, LangGraph, Hugging Face, RAG (Retrieval-Augmented Generation), ChromaDB, BAAI/bge-base-en-v1.5 embeddings. Databases: MySQL, SQLite, ChromaDB. Tools: Git, GitHub, VS Code.",
+      "source": "skills_summary"
+    },
+    {
+      "text": "Projects on Resume: 1. AI Mail Automation — AI-powered email processing and response system. 2. YouTube AI Assistant — AI agent that allows users to ask questions about YouTube video content. 3. Student Portal — Web application for managing student-related information. 4. Personal AI Assistant / Digital Twin — Interactive portfolio AI agent using RAG, LangGraph, ChromaDB, FastAPI, and React.",
+      "source": "projects_summary"
+    }
+  ],
+  "projects": [
+    {
+      "name": "project_overview",
+      "text": "I have 4 major projects documented in my portfolio: AI Mail Automation, YouTube AI Assistant, Student Portal, and Personal AI Assistant (Digital Twin).",
+      "source": "project_overview"
+    },
+    {
+      "name": "AI Mail Automation",
+      "text": "Project: AI Mail Automation\n\nDescription: I built an AI Mail Automation system to automate repetitive email-related tasks using artificial intelligence. The system is designed to process email information and assist with generating appropriate responses, reducing manual effort involved in handling high-volume or repetitive emails.\n\nProblem: Handling a large volume of repetitive emails manually is time-consuming and error-prone.\n\nGoal: Automate email processing and response generation using AI to reduce manual work.\n\nMy Contribution: I designed and implemented the entire system including the email processing pipeline, AI integration, and response generation logic.\n\nTechnologies Used: Python, FastAPI, LangChain, Hugging Face, Celery, Redis, Docker.",
+      "source": "ai_mail_automation"
+    },
+    {
+      "name": "YouTube AI Assistant",
+      "text": "Project: YouTube AI Assistant\n\nDescription: I built a YouTube AI Assistant that allows users to interact with YouTube video content using natural language. Users can ask questions about the information contained in a YouTube video, and the assistant retrieves and synthesizes relevant answers from the video content.\n\nProblem: Watching long YouTube videos to find specific information is time-consuming. Users need a way to quickly query video content.\n\nGoal: Build an AI assistant that can answer questions about YouTube video content using natural language.\n\nHow it works: The system processes YouTube video transcripts or captions, stores them in a searchable format, and uses AI to answer user questions based on the video content.\n\nMy Contribution: I designed and built the entire system including YouTube data extraction, transcript processing, AI question answering, and the user interface.\n\nTechnologies Used: Python, LangChain, YouTube Transcript API, ChromaDB, Hugging Face, React.",
+      "source": "youtube_ai_assistant"
+    },
+    {
+      "name": "Student Portal",
+      "text": "Project: Student Portal\n\nDescription: I built a Student Portal web application for managing student-related information and functionality through a web interface. The portal provides features for student data management and academic information.\n\nGoal: Create a functional web application for student information management.\n\nMy Contribution: I designed and developed the Student Portal including the backend API, database schema, and frontend interface.\n\nTechnologies Used: Python, Django, Django REST Framework, React, MySQL.",
+      "source": "student_portal"
+    },
+    {
+      "name": "Personal AI Assistant / Digital Twin",
+      "text": "Project: Personal AI Assistant (Digital Twin Portfolio Agent)\n\nDescription: I built a Personal AI Assistant — also called a Digital Twin — for my professional portfolio. Instead of requiring recruiters or visitors to manually search through my resume and project information, they can ask questions conversationally and receive accurate, first-person answers.\n\nProblem: Traditional portfolios are static. Recruiters and visitors must read through documents manually to find relevant information.\n\nGoal: Create an interactive AI agent that represents me professionally and answers questions about my skills, projects, experience, and background using retrieved knowledge.\n\nSolution: A RAG (Retrieval-Augmented Generation) architecture where my portfolio information is stored in a ChromaDB vector database across 12 domain collections. When a question is asked, the system retrieves the most semantically relevant information and uses an LLM to generate a first-person response.\n\nArchitecture:\n- Frontend: React + Vite + Tailwind CSS with glassmorphic UI\n- Backend: FastAPI with Server-Sent Events (SSE) for real-time streaming\n- AI Pipeline: LangGraph state machine with nodes for intent detection, query rewriting, retrieval, context building, LLM generation, validation, and memory\n- Vector Store: ChromaDB with 12 isolated domain collections\n- Embeddings: BAAI/bge-base-en-v1.5 (768-dimensional, cosine similarity)\n- LLM: Hugging Face Inference API (configurable model via HF_MODEL env var)\n- Memory: SQLite-based conversation memory for multi-turn context\n\nKey Features:\n1. Intent Classification — classifies queries into PERSONAL_INQUIRY, GREETING, OFF_TOPIC, PRIVATE_REQUEST, CREDENTIAL_REQUEST, PROMPT_INJECTION\n2. Query Rewriting — rewrites follow-up questions into standalone queries using conversation history\n3. Collection-Aware Retrieval — routes to relevant collections based on query topic\n4. MMR Retrieval — uses Maximum Marginal Relevance for diverse, non-redundant results\n5. First-Person Validation — detects and corrects third-person references in responses\n6. Privacy Protection — refuses to answer personal/family/private questions\n7. Prompt Injection Defense — resists system prompt reveal and instruction override attempts\n8. SSE Streaming — streams tokens in real-time for smooth user experience\n9. Conversation Memory — maintains conversation context across turns using SQLite\n\nTechnologies Used: Python, FastAPI, LangGraph, LangChain, ChromaDB, BAAI/bge-base-en-v1.5, Hugging Face, React, Vite, Tailwind CSS, SQLite, SSE, Pydantic\n\nChallenges & Solutions:\n- Challenge: Preventing the LLM from hallucinating portfolio information. Solution: Strict RAG grounding — the LLM is instructed to answer only from retrieved context, and a validation node checks for third-person violations.\n- Challenge: Handling diverse question phrasings for the same topic. Solution: Semantic embeddings with MMR retrieval allow the system to find relevant content regardless of exact phrasing.\n- Challenge: Managing conversation context for follow-up questions. Solution: SQLite-based memory store preserves conversation history; query rewriter injects last-discussed topic into follow-up queries.",
+      "source": "personal_ai_assistant_digital_twin"
+    }
+  ],
+  "experience": [
+    {
+      "text": "Professional Experience: Python & AI Developer specializing in building AI applications, RAG pipelines, FastAPI backend APIs, and web development. Actively seeking opportunities in AI engineering, Python backend development, and full-stack development.",
+      "source": "work_experience"
+    }
+  ],
+  "skills": [
+    {
+      "text": "Programming Languages: Python (primary language, used for backend, AI, automation, and APIs), JavaScript (used for frontend development with React), HTML (web markup), CSS (web styling), SQL (database queries).",
+      "source": "programming_languages"
+    },
+    {
+      "text": "Backend Frameworks: Django (Python web framework for full-stack web applications), FastAPI (modern high-performance Python API framework, used in Personal AI Assistant), Django REST Framework / DRF (building REST APIs with Django). I have experience building REST APIs, backend systems, and web applications using both Django and FastAPI.",
+      "source": "backend_skills"
+    },
+    {
+      "text": "Frontend Technologies: React (JavaScript library for building user interfaces). I have experience building interactive web frontends with React, including the frontend for my Personal AI Assistant portfolio project.",
+      "source": "frontend_skills"
+    },
+    {
+      "text": "AI & Machine Learning: LangChain (framework for building LLM-powered applications), LangGraph (stateful graph-based AI workflow orchestration), RAG — Retrieval-Augmented Generation (combining vector retrieval with LLM generation), Hugging Face (LLM and embedding models via Inference API), BAAI/bge-base-en-v1.5 (sentence embedding model, 768 dimensions, cosine similarity), ChromaDB (vector database for semantic search). I have built production-ready RAG systems using these technologies.",
+      "source": "ai_ml_skills"
+    },
+    {
+      "text": "Databases: MySQL (relational database management), SQLite (lightweight embedded relational database, used for conversation memory in Personal AI Assistant), ChromaDB (vector database for embeddings and semantic search). I have experience designing database schemas and writing SQL queries.",
+      "source": "database_skills"
+    },
+    {
+      "text": "Developer Tools & Workflow: Git (version control), GitHub (code hosting, collaboration, repositories), VS Code (primary code editor). I follow standard software development practices including version control, code organization, and documentation.",
+      "source": "tools_skills"
+    },
+    {
+      "text": "APIs & Web Services: REST API design and development using FastAPI and Django REST Framework. Server-Sent Events (SSE) for real-time streaming. Hugging Face Inference API for LLM integration. YouTube Data API. Experience building and consuming HTTP APIs.",
+      "source": "api_skills"
+    },
+    {
+      "text": "Architecture Patterns: RAG (Retrieval-Augmented Generation), LangGraph state machines (directed acyclic graph workflow), MVC pattern (Django), REST architecture, SSE streaming architecture, vector database architecture with semantic search.",
+      "source": "architecture_patterns"
+    }
+  ],
+  "certificates": [
+    {
+      "text": "Certificates & Coursework: Completed coursework and practical projects in Python programming, software engineering, web development, and AI engineering.",
+      "source": "certificates"
+    }
+  ],
+  "blogs": [
+    {
+      "text": "Technical Writing & Articles: Interested in writing technical articles on Python, AI development, RAG architectures, and web APIs.",
+      "source": "blogs"
+    }
+  ],
+  "github": [
+    {
+      "text": "GitHub Profile: My GitHub profile contains my public repositories and code contributions for projects including AI Mail Automation, YouTube AI Assistant, Student Portal, and Personal AI Assistant.",
+      "source": "github_profile"
+    }
+  ],
+  "linkedin": [
+    {
+      "text": "LinkedIn Profile: I maintain a professional LinkedIn profile highlighting my BCA education, technical skills, Python & AI development projects, and experience.",
+      "source": "linkedin_profile"
+    }
+  ],
+  "services": [
+    {
+      "text": "Services I Offer: I am available for freelance projects and collaborations. My services include:\n\n1. AI Application Development — Building AI-powered applications using LangChain, LangGraph, RAG, Hugging Face, and vector databases like ChromaDB.\n\n2. Python Backend Development — Building REST APIs and backend systems using FastAPI and Django.\n\n3. RAG System Development — Designing and implementing Retrieval-Augmented Generation systems with vector search, semantic embeddings, and LLM integration.\n\n4. Full-Stack Web Development — Building complete web applications with Python backend (Django/FastAPI) and React frontend.\n\n5. Chatbot / AI Assistant Development — Building conversational AI assistants, portfolio agents, and domain-specific chatbots.\n\n6. API Development — Designing and building REST APIs using FastAPI or Django REST Framework.",
+      "source": "services_offered"
+    },
+    {
+      "text": "Collaboration & Availability: I am open to:\n- Internship opportunities (AI engineering, Python development, full-stack development)\n- Full-time roles (AI developer, Python developer, full-stack developer)\n- Freelance projects (AI applications, web development, API development)\n- Open-source collaborations\n- Remote work opportunities\n\nIf you are interested in working together, please reach out via my contact details.",
+      "source": "availability"
+    }
+  ],
+  "contact_info": [
+    {
+      "text": "Contact Information: Available for professional inquiries, collaboration requests, and job opportunities via direct messaging or portfolio contact options.",
+      "source": "contact_details"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Who are you?",
+      "answer": "I am Vishal Kumar, a Python and AI developer. I specialize in building AI-powered applications, backend APIs, and full-stack web projects using Python, Django, FastAPI, LangChain, LangGraph, ChromaDB, Hugging Face, and React."
+    },
+    {
+      "question": "Tell me about yourself.",
+      "answer": "I am a BCA graduate with a strong focus on AI engineering and Python development. I have built several AI and web-based projects, including an AI Mail Automation system, a YouTube AI Assistant, a Student Portal, and this Personal AI Assistant (Digital Twin). My technical interests include applied AI, RAG systems, LLMs, and backend development."
+    },
+    {
+      "question": "What do you do?",
+      "answer": "I am a Python and AI developer. I build AI-powered applications, REST APIs, and full-stack web applications. I specialize in retrieval-augmented generation (RAG), LangGraph-based AI workflows, and integrating language models into practical applications."
+    },
+    {
+      "question": "What is your professional background?",
+      "answer": "I have a BCA degree and have been building Python and AI projects. My background covers AI engineering, backend development with Django and FastAPI, and frontend development with React. I have practical experience building production-ready AI systems using LangGraph, LangChain, ChromaDB, and Hugging Face."
+    },
+    {
+      "question": "What kind of developer are you?",
+      "answer": "I am primarily a Python and AI developer with full-stack capabilities. I enjoy building backend systems, AI pipelines, and APIs, and I have experience on the frontend with React. My focus is on applied AI — building real, useful AI applications rather than just theoretical models."
+    },
+    {
+      "question": "What are your main technical interests?",
+      "answer": "My main technical interests are AI engineering, large language models (LLMs), retrieval-augmented generation (RAG), LangGraph-based AI workflows, vector databases, and building AI-powered web applications. I am also interested in backend development with Python and API design."
+    },
+    {
+      "question": "What did you study?",
+      "answer": "I completed a BCA (Bachelor of Computer Applications) degree. My studies covered computer science, software development, programming, databases, and information technology."
+    },
+    {
+      "question": "What degree do you have?",
+      "answer": "I have a BCA — Bachelor of Computer Applications degree."
+    },
+    {
+      "question": "What is your educational background?",
+      "answer": "I have a BCA (Bachelor of Computer Applications) degree, with coursework in computer science, software development, databases, and programming."
+    },
+    {
+      "question": "What programming languages do you know?",
+      "answer": "I work primarily with Python and JavaScript. Python is my strongest language — I use it for backend development, AI applications, automation, and APIs. I use JavaScript for frontend development with React. I also know HTML, CSS, and SQL."
+    },
+    {
+      "question": "What is your strongest programming language?",
+      "answer": "Python is my strongest programming language. I use it extensively for backend development, AI applications, automation, and building APIs with Django and FastAPI."
+    },
+    {
+      "question": "What technologies do you use?",
+      "answer": "I work with Python, Django, FastAPI, Django REST Framework (DRF), React, LangChain, LangGraph, Hugging Face, ChromaDB, MySQL, SQLite, Git, GitHub, HTML, CSS, and JavaScript."
+    },
+    {
+      "question": "What backend technologies do you know?",
+      "answer": "My backend technologies include Python, Django, FastAPI, and Django REST Framework (DRF). I build REST APIs and backend systems using these frameworks, and I have experience with MySQL and SQLite databases."
+    },
+    {
+      "question": "What frontend technologies do you know?",
+      "answer": "I work with React for frontend development, along with HTML, CSS, and JavaScript. I have built interactive web frontends with React, including the frontend for my Personal AI Assistant portfolio project."
+    },
+    {
+      "question": "Do you know Python?",
+      "answer": "Yes, Python is my primary and strongest programming language. I use it for backend development, AI applications, automation, REST APIs with Django and FastAPI, and AI/ML pipelines with LangChain, LangGraph, and Hugging Face."
+    },
+    {
+      "question": "Do you know Django?",
+      "answer": "Yes, I work with Django and Django REST Framework (DRF). I have experience building web applications and REST APIs using Django."
+    },
+    {
+      "question": "Do you know FastAPI?",
+      "answer": "Yes, I use FastAPI for building high-performance Python APIs. I built the backend of my Personal AI Assistant (Digital Twin) project using FastAPI, including SSE streaming endpoints, REST endpoints, and the LangGraph integration."
+    },
+    {
+      "question": "Do you know React?",
+      "answer": "Yes, I work with React for frontend development. I built the frontend of my Personal AI Assistant using React and Vite with a glassmorphic dark-mode UI."
+    },
+    {
+      "question": "Do you know LangChain?",
+      "answer": "Yes, I have experience with LangChain. I use it for building LLM-powered applications, managing document loaders, text splitters, and integration with ChromaDB vector stores."
+    },
+    {
+      "question": "Do you know LangGraph?",
+      "answer": "Yes, I use LangGraph for building stateful AI agent workflows. I built my Personal AI Assistant using a LangGraph state machine with nodes for intent detection, query rewriting, retrieval, context building, LLM generation, validation, and memory management."
+    },
+    {
+      "question": "Do you know RAG?",
+      "answer": "Yes, I have hands-on experience building RAG (Retrieval-Augmented Generation) systems. My Personal AI Assistant uses a RAG architecture where portfolio information is stored in ChromaDB, semantically retrieved using BAAI/bge-base-en-v1.5 embeddings, and used to ground LLM responses."
+    },
+    {
+      "question": "Do you know ChromaDB?",
+      "answer": "Yes, I use ChromaDB as the vector database in my Personal AI Assistant. I have 12 domain collections in ChromaDB, each storing embedded portfolio information for semantic retrieval using cosine similarity and MMR (Maximum Marginal Relevance) search."
+    },
+    {
+      "question": "Do you use Git and GitHub?",
+      "answer": "Yes, I use Git for version control and GitHub for code hosting and collaboration. All my projects are managed using Git."
+    },
+    {
+      "question": "What is your experience with AI?",
+      "answer": "I have hands-on experience building AI-powered applications. I have built a RAG-based portfolio AI agent, a YouTube AI assistant for video question answering, and an AI mail automation system. I work with LangChain, LangGraph, Hugging Face models, ChromaDB, and embedding models to build practical AI systems."
+    },
+    {
+      "question": "Have you built AI agents?",
+      "answer": "Yes, I have built AI agent systems. My Personal AI Assistant is built as a LangGraph state machine — a directed acyclic graph with specialized nodes: intent detection, query rewriting, RAG retrieval, context building, LLM generation, validation, and conversation memory."
+    },
+    {
+      "question": "Have you built RAG systems?",
+      "answer": "Yes, I have built a production RAG system for my Personal AI Assistant. The system uses BAAI/bge-base-en-v1.5 embeddings, ChromaDB for vector storage across 12 collections, cosine similarity search with MMR for diverse retrieval, and a grounding prompt that constrains the LLM to answer only from retrieved context."
+    },
+    {
+      "question": "What embedding models have you used?",
+      "answer": "I have used BAAI/bge-base-en-v1.5, a state-of-the-art 768-dimensional sentence embedding model from Hugging Face. I use it with cosine similarity for semantic search in ChromaDB."
+    },
+    {
+      "question": "What vector databases have you used?",
+      "answer": "I have used ChromaDB as my primary vector database. I have experience setting up persistent ChromaDB with multiple named collections, configuring cosine similarity search, and using it with LangChain's Chroma integration for semantic retrieval."
+    },
+    {
+      "question": "What is RAG?",
+      "answer": "RAG stands for Retrieval-Augmented Generation. It is a technique that combines information retrieval with language model generation. In my Personal AI Assistant, when a user asks a question, the system first retrieves the most semantically relevant information from my ChromaDB knowledge base, then passes that context to the LLM which generates a grounded, first-person answer based only on the retrieved information. This prevents hallucinations and ensures answers are accurate."
+    },
+    {
+      "question": "How does your RAG pipeline work?",
+      "answer": "My RAG pipeline has these steps: 1) Intent detection classifies the query type. 2) Query rewriting rewrites follow-up questions into standalone queries using conversation history. 3) The retriever searches relevant ChromaDB collections using BAAI/bge-base-en-v1.5 embeddings and MMR. 4) Context builder formats the retrieved documents. 5) The LLM generates a first-person response using only the retrieved context. 6) The validator checks for third-person violations and corrects them. 7) Memory stores the conversation turn in SQLite."
+    },
+    {
+      "question": "Why did you use ChromaDB?",
+      "answer": "I chose ChromaDB for several reasons: it is lightweight and easy to embed in a Python application, supports persistent storage, integrates natively with LangChain, supports cosine similarity search and MMR, and allows multiple named collections — which I use to organize portfolio information across 12 domain areas."
+    },
+    {
+      "question": "Why did you use LangGraph?",
+      "answer": "I chose LangGraph because it allows me to structure the AI workflow as a stateful directed graph with clear, testable nodes. Each step of my pipeline — intent detection, query rewriting, retrieval, context building, generation, validation, and memory — is a separate node. LangGraph handles state management, conditional routing between nodes, and compilation of the workflow into an executable graph."
+    },
+    {
+      "question": "How do you prevent hallucinations?",
+      "answer": "I prevent hallucinations through several mechanisms: 1) Strict RAG grounding — the LLM is explicitly instructed to answer only from the retrieved context snippets. 2) A fallback response is used when no relevant context is found, saying 'I don't have that specific detail recorded.' 3) A validation node checks for third-person pronouns and corrects them. 4) Off-topic and private questions are rejected before reaching the LLM. 5) Prompt injection attempts are detected and blocked."
+    },
+    {
+      "question": "Why did you use LangChain?",
+      "answer": "I use LangChain for its ecosystem of integrations — particularly for document loading, text splitting, the Chroma vector store integration, and LangChain document objects. LangGraph (which I also use) is built on LangChain's core abstractions."
+    },
+    {
+      "question": "Why did you use Hugging Face?",
+      "answer": "I use Hugging Face for two purposes: first, for embedding models (BAAI/bge-base-en-v1.5 via sentence-transformers), and second, for LLM generation through the Hugging Face Inference API. Hugging Face provides access to a wide range of open-source models without requiring local GPU resources."
+    },
+    {
+      "question": "Which Hugging Face models have you used?",
+      "answer": "I use BAAI/bge-base-en-v1.5 for text embeddings (a high-quality 768-dimensional embedding model). For LLM generation, I use the Hugging Face Inference API with a configurable model (configured via the HF_MODEL environment variable). The default is Mistral-7B-Instruct."
+    },
+    {
+      "question": "How do you integrate Hugging Face?",
+      "answer": "I integrate Hugging Face in two ways: 1) Embeddings: I use sentence-transformers via LangChain's HuggingFaceEmbeddings with the BAAI/bge-base-en-v1.5 model running locally. 2) LLM Generation: I call the Hugging Face Inference API using HTTP requests with my HF_TOKEN stored as an environment variable. The model is configurable via the HF_MODEL environment variable."
+    },
+    {
+      "question": "Do you use Hugging Face?",
+      "answer": "Yes, I use Hugging Face for both embeddings and LLM generation. I use BAAI/bge-base-en-v1.5 for semantic embeddings and the Hugging Face Inference API for text generation. My HF API token is stored securely as an environment variable and is never exposed in the code or frontend."
+    },
+    {
+      "question": "What projects have you built?",
+      "answer": "I have built the following projects: 1) AI Mail Automation — an AI system for automating email processing and response generation. 2) YouTube AI Assistant — an AI agent that allows users to ask questions about YouTube video content. 3) Student Portal — a web application for student information management. 4) Personal AI Assistant (Digital Twin) — an interactive portfolio AI agent built with LangGraph, RAG, ChromaDB, FastAPI, and React."
+    },
+    {
+      "question": "Which project are you most proud of?",
+      "answer": "I am most proud of my Personal AI Assistant (Digital Twin) project. It combines the most technologies I have learned — LangGraph state machines, RAG architecture, ChromaDB vector search, FastAPI SSE streaming, React frontend, and conversation memory — into a complete, working AI application. It also solves a real problem: making my portfolio interactive and searchable through conversation."
+    },
+    {
+      "question": "Tell me about your AI Mail Automation project.",
+      "answer": "I built an AI Mail Automation system to automate repetitive email-related tasks using AI. The system processes email content and assists with generating appropriate responses, reducing manual effort involved in handling high-volume or repetitive emails."
+    },
+    {
+      "question": "What problem does your AI Mail Automation project solve?",
+      "answer": "My AI Mail Automation project addresses the problem of manual, repetitive email handling. Processing large volumes of emails and composing appropriate responses is time-consuming. The AI system automates this process by understanding email content and assisting with response generation."
+    },
+    {
+      "question": "Tell me about your YouTube AI Assistant.",
+      "answer": "I built a YouTube AI Assistant that allows users to interact with YouTube video content using natural language. Users can ask questions about the content of a YouTube video, and the assistant retrieves and synthesizes relevant answers from the video transcript. This saves time compared to watching long videos to find specific information."
+    },
+    {
+      "question": "Tell me about your Student Portal project.",
+      "answer": "I built a Student Portal web application for managing student-related information and functionality. The portal provides a web interface for accessing and managing student data."
+    },
+    {
+      "question": "Tell me about your Personal AI Assistant.",
+      "answer": "I built a Personal AI Assistant — also called a Digital Twin — for my professional portfolio. It uses RAG (Retrieval-Augmented Generation) with a LangGraph state machine, ChromaDB vector database, BAAI/bge-base-en-v1.5 embeddings, FastAPI backend with SSE streaming, and a React frontend. The assistant speaks in first person on my behalf, answering questions from recruiters, hiring managers, clients, and visitors about my professional background, projects, skills, and experience."
+    },
+    {
+      "question": "Why did you build a Digital Twin?",
+      "answer": "I built the Digital Twin to make my portfolio interactive and accessible. Instead of requiring recruiters or visitors to manually search through my resume and project documentation, they can ask questions conversationally and get accurate, first-person answers. It also showcases my AI engineering skills — the project itself demonstrates my ability to build RAG systems, LangGraph workflows, vector databases, and SSE streaming APIs."
+    },
+    {
+      "question": "How does your Digital Twin work?",
+      "answer": "My Digital Twin works through a LangGraph pipeline: 1) The user sends a question from the React frontend. 2) FastAPI receives it and runs the LangGraph state machine. 3) Intent detection classifies the query. 4) For personal inquiries, the query rewriter creates a standalone search query. 5) The retriever searches relevant ChromaDB collections using semantic embeddings. 6) The context builder formats the results. 7) The LLM generates a first-person response from the context. 8) The validator checks for third-person violations. 9) The response is streamed back via SSE."
+    },
+    {
+      "question": "Explain your Personal AI Assistant architecture.",
+      "answer": "My Personal AI Assistant has a multi-layer architecture:\n\nFrontend: React + Vite + Tailwind CSS with glassmorphic dark-mode UI. Connects to the backend via SSE for real-time streaming.\n\nBackend: FastAPI application with SSE streaming endpoint (/api/v1/chat/stream). Handles chat, history, knowledge base stats, and suggestions endpoints.\n\nAI Pipeline (LangGraph State Machine): Intent Detector → (PERSONAL_INQUIRY) → Query Rewriter → Retriever → Context Builder → LLM Generator → Validator → Memory. Non-personal intents bypass retrieval and go directly to the generator.\n\nVector Store: ChromaDB with 12 isolated domain collections (about_me, resume, projects, experience, skills, certificates, blogs, github, linkedin, faqs, services, contact_info). Cosine similarity with MMR retrieval.\n\nEmbeddings: BAAI/bge-base-en-v1.5 (768 dimensions) running locally via sentence-transformers.\n\nLLM: Hugging Face Inference API with configurable model via HF_MODEL environment variable.\n\nMemory: SQLite-based conversation memory storing turn history per session ID."
+    },
+    {
+      "question": "How does SSE streaming work in your project?",
+      "answer": "In my Personal AI Assistant, Server-Sent Events (SSE) work as follows: The React frontend initiates a POST request to /api/v1/chat/stream. FastAPI returns a StreamingResponse with media_type='text/event-stream'. The LangGraph pipeline runs, and the response is streamed token-by-token. Three event types are used: 'metadata' (sent first with intent, collections, and sources), 'token' (each word/token of the response), and 'end' (final event with status and sources). The frontend accumulates tokens and renders them progressively using a custom SSE hook."
+    },
+    {
+      "question": "Why did you use SSE instead of WebSockets?",
+      "answer": "I chose SSE (Server-Sent Events) for streaming because it is simpler to implement for one-way server-to-client streaming, works over standard HTTP, and integrates cleanly with FastAPI's StreamingResponse. For a chat use case where the client sends a request and the server streams a response, SSE is a natural fit. WebSockets would add bidirectional complexity that is not needed here."
+    },
+    {
+      "question": "How does conversation memory work?",
+      "answer": "My assistant maintains conversation state using SQLite. Each conversation has a unique thread_id (session ID). The MemoryStoreManager stores conversation turns (user message + assistant response) as JSON in SQLite. At the start of each turn, the conversation history is loaded and passed to the LangGraph state. The query rewriter uses this history to rewrite follow-up questions into standalone queries."
+    },
+    {
+      "question": "Why did you create multiple Chroma collections?",
+      "answer": "I created 12 isolated ChromaDB collections (about_me, resume, projects, experience, skills, certificates, blogs, github, linkedin, faqs, services, contact_info) to enable precise, topic-specific retrieval. When a user asks about projects, only the 'projects' collection is searched. When asked about skills, only 'skills' is searched. This improves retrieval precision, reduces irrelevant results, and makes the system more efficient compared to storing everything in one large collection."
+    },
+    {
+      "question": "How does collection routing work?",
+      "answer": "Collection routing is handled in the intent detector node. It maps keywords in the user query to relevant collections. For example, 'project', 'built', 'application' → projects collection; 'tech', 'python', 'react' → skills collection; 'education', 'degree', 'university' → about_me + resume collections. This ensures only relevant collections are searched for each query type."
+    },
+    {
+      "question": "How does query rewriting work?",
+      "answer": "Query rewriting resolves follow-up questions using conversation history. For example, if a user asks 'Tell me about AI Mail Automation' and then asks 'What technologies did you use?', the rewriter detects the follow-up pattern, finds the last discussed project from conversation history, and rewrites the query to 'What technologies did I use in my AI Mail Automation project?' — making it suitable for standalone vector search."
+    },
+    {
+      "question": "Are you looking for internships?",
+      "answer": "Yes, I am open to internship opportunities in AI engineering, Python development, full-stack development, and related areas. If you have an internship opportunity, please feel free to reach out via my contact details."
+    },
+    {
+      "question": "Are you looking for full-time opportunities?",
+      "answer": "Yes, I am open to full-time roles in AI development, Python backend development, and full-stack development. I am interested in positions where I can work on AI applications, backend systems, or both."
+    },
+    {
+      "question": "What type of role are you looking for?",
+      "answer": "I am interested in roles related to AI engineering, Python development, full-stack development, and backend development. I enjoy building AI-powered applications, REST APIs, and web systems. I am open to both internship and full-time positions, as well as freelance project work."
+    },
+    {
+      "question": "Are you available for remote opportunities?",
+      "answer": "Yes, I am open to remote opportunities. I am comfortable working remotely and collaborating through standard remote work tools and communication channels."
+    },
+    {
+      "question": "Are you interested in AI engineering?",
+      "answer": "Yes, AI engineering is one of my primary interests. I enjoy building practical AI applications — RAG systems, AI agents, LangGraph workflows, and LLM integrations. My Personal AI Assistant project demonstrates my hands-on AI engineering experience."
+    },
+    {
+      "question": "What services do you provide?",
+      "answer": "I offer services including: AI application development (LangChain, LangGraph, RAG, Hugging Face), Python backend development (FastAPI, Django), RAG system development, full-stack web development (Python backend + React frontend), chatbot and AI assistant development, and REST API development."
+    },
+    {
+      "question": "Can you build AI applications?",
+      "answer": "Yes, I can build AI applications. I have experience with LangChain, LangGraph, RAG systems, Hugging Face model integration, ChromaDB vector databases, and SSE streaming APIs. My Personal AI Assistant project is an example of a complete AI application I built."
+    },
+    {
+      "question": "Can you build RAG applications?",
+      "answer": "Yes, I can build RAG (Retrieval-Augmented Generation) applications. I have hands-on experience designing RAG pipelines with ChromaDB, BAAI embeddings, LangChain, and LangGraph. My Personal AI Assistant is a production RAG application."
+    },
+    {
+      "question": "Can you build chatbots?",
+      "answer": "Yes, I can build chatbots and conversational AI assistants. I have experience building them with LangGraph state machines, RAG retrieval, Hugging Face LLMs, FastAPI streaming backends, and React frontends."
+    },
+    {
+      "question": "How can I contact you?",
+      "answer": "You can reach me via my portfolio contact links or direct messaging. Feel free to reach out for job opportunities, freelance projects, collaborations, or any professional inquiries."
+    },
+    {
+      "question": "What is your email address?",
+      "answer": "You can reach out to me directly via my portfolio contact options for professional inquiries, job opportunities, or collaboration."
+    },
+    {
+      "question": "Where can I find your GitHub?",
+      "answer": "You can view my GitHub profile for my latest code repositories and open-source projects including AI Mail Automation, YouTube AI Assistant, Student Portal, and Personal AI Assistant."
+    },
+    {
+      "question": "Where can I find your LinkedIn?",
+      "answer": "You can view my LinkedIn profile for details on my professional background, education, skills, and projects."
+    },
+    {
+      "question": "Are you open to collaboration?",
+      "answer": "Yes, I am open to collaboration on AI projects, web development projects, open-source contributions, and technical projects in my areas of expertise. If you have an interesting project or idea, feel free to reach out via my contact details."
+    }
+  ]
+}
