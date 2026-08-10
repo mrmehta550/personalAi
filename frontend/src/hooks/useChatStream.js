@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from 'react';
+import API_URL from '../config/api';
 
 export function useChatStream() {
   const [isStreaming, setIsStreaming] = useState(false);
@@ -20,18 +21,16 @@ export function useChatStream() {
       let metadataObj = null;
 
       try {
-        // Railway backend URL from Vercel environment variable
-        const API_URL = import.meta.env.VITE_API_URL;
-
         if (!API_URL) {
+          console.error('VITE_API_URL is missing. Failed request URL:', `${API_URL}/api/v1/chat/stream`);
           throw new Error(
             'VITE_API_URL is not configured. Please add it to Vercel Environment Variables.'
           );
         }
 
-        const baseURL = API_URL.replace(/\/+$/, '');
+        const requestUrl = `${API_URL}/api/v1/chat/stream`;
 
-        const response = await fetch(`${baseURL}/api/v1/chat/stream`, {
+        const response = await fetch(requestUrl, {
           method: 'POST',
 
           headers: {
@@ -50,7 +49,7 @@ export function useChatStream() {
 
         // Handle HTTP errors
         if (!response.ok) {
-          let errorMessage = `HTTP error! status: ${response.status}`;
+          let errorMessage = `HTTP error! status: ${response.status} at ${requestUrl}`;
 
           try {
             const errorData = await response.json();
@@ -62,6 +61,7 @@ export function useChatStream() {
             // Response was not JSON
           }
 
+          console.error(`Failed streaming request: URL=${requestUrl}, Status=${response.status} ${response.statusText}`);
           throw new Error(errorMessage);
         }
 

@@ -1,13 +1,17 @@
-const API_BASE_URL = '/api/v1';
+import API_URL from '../config/api';
 
 export async function fetchSuggestions() {
+  const url = `${API_URL}/api/v1/suggestions`;
   try {
-    const res = await fetch(`${API_BASE_URL}/suggestions`);
-    if (!res.ok) throw new Error('Failed to fetch suggestions');
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error(`Failed request: URL=${url}, Status=${res.status} ${res.statusText}`);
+      throw new Error(`Failed to fetch suggestions: HTTP status ${res.status}`);
+    }
     const data = await res.json();
     return data.suggestions || [];
   } catch (err) {
-    console.error('Error fetching suggestions:', err);
+    console.error(`Error fetching suggestions from ${url}:`, err);
     return [
       "Tell me about your projects",
       "Tell me about your AI Mail Automation project",
@@ -21,36 +25,49 @@ export async function fetchSuggestions() {
 }
 
 export async function fetchChatHistory(threadId) {
+  const url = `${API_URL}/api/v1/chat/history/${threadId}`;
   try {
-    const res = await fetch(`${API_BASE_URL}/chat/history/${threadId}`);
-    if (!res.ok) return [];
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error(`Failed request: URL=${url}, Status=${res.status} ${res.statusText}`);
+      return [];
+    }
     const data = await res.json();
     return data.messages || [];
   } catch (err) {
-    console.error('Error fetching history:', err);
+    console.error(`Error fetching history from ${url}:`, err);
     return [];
   }
 }
 
 export async function clearChatHistory(threadId) {
+  const url = `${API_URL}/api/v1/chat/history/${threadId}`;
   try {
-    const res = await fetch(`${API_BASE_URL}/chat/history/${threadId}`, {
+    const res = await fetch(url, {
       method: 'DELETE'
     });
+    if (!res.ok) {
+      console.error(`Failed request: URL=${url}, Status=${res.status} ${res.statusText}`);
+      return false;
+    }
     return res.ok;
   } catch (err) {
-    console.error('Error clearing history:', err);
+    console.error(`Error clearing history from ${url}:`, err);
     return false;
   }
 }
 
 export async function fetchCollectionStats() {
+  const url = `${API_URL}/api/v1/kb/collections`;
   try {
-    const res = await fetch(`${API_BASE_URL}/kb/collections`);
-    if (!res.ok) return null;
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error(`Failed request: URL=${url}, Status=${res.status} ${res.statusText}`);
+      return null;
+    }
     return await res.json();
   } catch (err) {
-    console.error('Error fetching KB stats:', err);
+    console.error(`Error fetching KB stats from ${url}:`, err);
     return null;
   }
 }
